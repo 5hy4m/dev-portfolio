@@ -20,7 +20,7 @@ export default async function Home() {
         </span>
 
         <div className={BoldFont.className + " text-5xl md:text-7xl "}>
-          I'm{" "}
+          I&apos;m{" "}
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-[var(--primary-gradient-from)] to-[var(--primary-gradient-to)]">
             Shyam Kumar
           </span>
@@ -34,8 +34,8 @@ export default async function Home() {
           WOW!.
           <br />
           <br />I am always keen to learn and explore new technologies,
-          frameworks and programming languages. Currently, I'm learning about
-          Astro and Replicache.
+          frameworks and programming languages. Currently, I&apos;m learning
+          about Astro and Replicache.
         </p>
       </div>
     </main>
