@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --primary-gradient-from: #ef473a;
+  --primary-gradient-from: #ff9c5e;
   --primary-gradient-to: #cb2d3e;
   --secondary-color: #a4adb9;
 }
