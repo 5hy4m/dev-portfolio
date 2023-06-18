@@ -1,5 +1,6 @@
 import React from "react";
 import localFont from "next/font/local";
+import NewtonsCradle from "./NewtonsCradle";
 
 const BoldFont = localFont({
   src: "../../../../public/fonts/Sequel-Sans-Heavy-Disp.ttf",
@@ -10,8 +11,8 @@ function IntroSection(props: Props) {
   const {} = props;
 
   return (
-    <div className="grid grid-cols-2 container md:mx-auto  px-5 flex justify-center items-center bg-black text-white h-full">
-      <div>
+    <section className="grid grid-cols-2 container md:mx-auto pt-[100px] px-5 flex justify-center items-center bg-black text-white">
+      <div className="h-full">
         <span
           className={
             BoldFont.className +
@@ -40,8 +41,8 @@ function IntroSection(props: Props) {
           about Astro and Replicache.
         </p>
       </div>
-      {/* <NewtonsCradle /> */}
-    </div>
+      <NewtonsCradle />
+    </section>
   );
 }
 
