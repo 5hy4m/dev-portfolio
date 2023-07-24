@@ -15,9 +15,13 @@ export const responsive = {
     renderFrame: { height: 500, width: 1400, x: 700, y: 600 },
     cradle: { xPos: 0, yPos: 325, size: 25, length: 160, count: 8 },
   },
-  min1200: {
-    renderFrame: { height: 500, width: 1000, x: 800, y: 700 },
+  max1500: {
+    renderFrame: { height: 500, width: 1000, x: 600, y: 650 },
     cradle: { xPos: 0, yPos: 325, size: 25, length: 160, count: 8 },
+  },
+  max1300: {
+    renderFrame: { height: 500, width: 1000, x: 900, y: 750 },
+    cradle: { xPos: 0, yPos: 325, size: 30, length: 200, count: 8 },
   },
 };
 

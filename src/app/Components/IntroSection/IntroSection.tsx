@@ -10,7 +10,7 @@ interface Props {}
 function IntroSection(props: Props) {
   return (
     <section className="h-full grid lg:grid-cols-2 lg:container md:mx-auto pt-[100px] px-5 flex justify-center items-center bg-black text-white">
-      <div className="">
+      <div>
         <span
           className={
             BoldFont.className +

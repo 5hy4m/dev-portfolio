@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { createCradle, defaultPositionAndSize, responsive } from "./utils";
 import { PositionAndSize } from "./type";
 import { useWindowSize } from "@/hooks/useWindowSize";
@@ -15,45 +15,47 @@ const {
 } = require("matter-js");
 
 function NewtonsCradle() {
+  const [width,height] = useWindowSize();
+
   const containerRef = useRef<HTMLDivElement>(null);
-  const canvasRef = useRef<any>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const engineRef = useRef<any>(null);
   const renderRef = useRef<any>(null);
 
   const positionAndSize = useRef<PositionAndSize>(defaultPositionAndSize);
 
-  const [canvasPosition, setCanvasPosition] = useState<string>("");
+  const [canvasPosition, setCanvasPosition] = useState<number>(0);
 
-  const assignSize = (window: Window) => {
-    const screenWidth = window.innerWidth!;
+  const assignSize = useCallback(()=>{
     let cradleXPos = 0;
-    positionAndSize.current.renderFrame =
-      screenWidth > 1500
-        ? responsive.min1500.renderFrame
-        : responsive.min1200.renderFrame;
-
-    positionAndSize.current.cradle =
-      screenWidth > 1500
-        ? responsive.min1500.cradle
-        : responsive.min1200.cradle;
+    if(width > 1500){
+      positionAndSize.current.renderFrame = responsive.min1500.renderFrame
+      positionAndSize.current.cradle = responsive.min1500.cradle
+    }else if(width > 1300){
+      positionAndSize.current.renderFrame = responsive.max1500.renderFrame
+      positionAndSize.current.cradle = responsive.max1500.cradle
+    }else if(width < 1300){
+      positionAndSize.current.renderFrame = responsive.max1300.renderFrame
+      positionAndSize.current.cradle = responsive.max1300.cradle
+    }
+    positionAndSize.current.renderFrame.width = width * (66.667/100)
 
     const containerRect = containerRef.current?.getBoundingClientRect();
 
     positionAndSize.current.renderFrame.height = 850;
 
-    cradleXPos = screenWidth > 1500 ? 600 : 500;
+    cradleXPos = width > 1500 ? 600 : 500;
     positionAndSize.current.cradle.xPos =
       cradleXPos - containerRect?.width! / 2;
 
-    screenWidth > 1500
-      ? setCanvasPosition("right-[-200px]")
-      : setCanvasPosition("right-[-100px]");
-  };
 
-  const [height, width] = useWindowSize();
+    const rect = containerRef.current?.getBoundingClientRect()
+    
+    setCanvasPosition(rect?.right!-width)
+  },[width])
 
   useEffect(() => {
-    assignSize(window);
+    assignSize();
 
     const cradleProps = positionAndSize.current.cradle;
     const renderFrame = positionAndSize.current.renderFrame;
@@ -109,14 +111,15 @@ function NewtonsCradle() {
       min: { x: 0, y: 50 },
       max: { x: renderFrame.x, y: renderFrame.y },
     });
-  });
+  },[assignSize]);
 
   return (
     <div ref={containerRef} className=" relative h-[550px] flex align-center">
       <canvas
         ref={canvasRef}
-        className={`absolute bottom-0 ${canvasPosition} canvas-class`}
-      ></canvas>
+        style = {{right: canvasPosition}}
+        className={`absolute bottom-0 max-w-[1400px] overflow-hidden`}
+        />
     </div>
   );
 }
