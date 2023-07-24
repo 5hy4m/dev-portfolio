@@ -1,6 +1,6 @@
 import React from "react";
 import localFont from "next/font/local";
-import NewtonsCradle from "./NewtonsCradle";
+import NewtonsCradle from "./NewtonsCradle/NewtonsCradle";
 
 const BoldFont = localFont({
   src: "../../../../public/fonts/Sequel-Sans-Heavy-Disp.ttf",
@@ -8,11 +8,9 @@ const BoldFont = localFont({
 interface Props {}
 
 function IntroSection(props: Props) {
-  const {} = props;
-
   return (
-    <section className="grid grid-cols-2 container md:mx-auto pt-[100px] px-5 flex justify-center items-center bg-black text-white">
-      <div className="h-full">
+    <section className="h-full grid lg:grid-cols-2 lg:container md:mx-auto pt-[100px] px-5 flex justify-center items-center bg-black text-white">
+      <div className="">
         <span
           className={
             BoldFont.className +
@@ -22,7 +20,9 @@ function IntroSection(props: Props) {
           Welcome to my site.
         </span>
 
-        <div className={BoldFont.className + " text-5xl md:text-7xl "}>
+        <div
+          className={BoldFont.className + " text-5xl md:text-6xl xl:text-7xl  "}
+        >
           I&apos;m{" "}
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-[var(--primary-gradient-from)] to-[var(--primary-gradient-to)]">
             Shyam Kumar
