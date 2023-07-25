@@ -42,8 +42,6 @@ function NewtonsCradle() {
 
     const containerRect = containerRef.current?.getBoundingClientRect();
 
-    positionAndSize.current.renderFrame.height = 850;
-
     cradleXPos = width > 1500 ? 600 : 500;
     positionAndSize.current.cradle.xPos =
       cradleXPos - containerRect?.width! / 2;
