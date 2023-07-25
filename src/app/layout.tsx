@@ -1,6 +1,6 @@
 import "./globals.css";
 
-import localFont from "@next/font/local";
+import localFont from "next/font/local";
 
 const myLocalFont = localFont({
   src: "../../public/fonts/NimbusSanL-Reg.otf",
