@@ -1,4 +1,4 @@
-import { IntroSection } from "./Components/IntroSection";
+import IntroSection from "./Sections/Intro/Intro";
 
 export default async function Home() {
   return (
