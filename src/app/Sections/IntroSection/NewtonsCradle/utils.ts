@@ -54,3 +54,18 @@ export const createCradle = (
 
   return newtonsCradle;
 };
+
+/* The function that will run when the events are triggered. */
+export const handleScrollOnCanvas = (e: any) => {
+  /* The flag that determines whether the wheel event is supported. */
+  let supportsWheel = false;
+  /* Check whether the wheel event is supported. */
+  if (e.type == "wheel") supportsWheel = true;
+  else if (supportsWheel) return;
+
+  /* Determine the direction of the scroll (< 0 → up, > 0 → down). */
+  const delta = (e.deltaY || -e.wheelDelta || e.detail) >> 10 || 1;
+
+  /* ... */
+  window.scrollTo(window.scrollX + delta * 15, window.scrollY + delta * 15);
+};
