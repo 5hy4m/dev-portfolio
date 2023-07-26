@@ -30,7 +30,7 @@ export const createCradle = (
   yy: number,
   number: number,
   size: number,
-  length: number
+  length: number,
 ) => {
   var newtonsCradle = Composite.create({ label: "Newtons Cradle" });
 
