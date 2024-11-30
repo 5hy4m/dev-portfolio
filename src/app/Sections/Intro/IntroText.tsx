@@ -2,7 +2,7 @@ import React from "react";
 import localFont from "next/font/local";
 
 const BoldFont = localFont({
-  src: "../../../../../public/fonts/Sequel-Sans-Heavy-Disp.ttf",
+  src: "../../../../public/fonts/Sequel-Sans-Heavy-Disp.ttf",
 });
 
 function Intro() {
